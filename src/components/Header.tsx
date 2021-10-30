@@ -15,7 +15,7 @@ const SaveButton = (props: IButton) => {
   );
 };
 
-const NewButton = (props: IButton) => {
+const NewButton = () => {
   const navigate = useNavigate();
 
   return (

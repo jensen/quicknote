@@ -17,7 +17,6 @@ import { saveNote } from "services/notes";
 import { useSave } from "context/save";
 import { useNote, useNotes } from "context/resources";
 import { useLocalStorage } from "hooks/local";
-import classNames from "classnames";
 
 const EditorWrapper = (props: React.PropsWithChildren<unknown>) => {
   const editor = useRef<HTMLInputElement>(null);
