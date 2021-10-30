@@ -14,7 +14,6 @@ I also wanted to try out the API provided by Supabase, where I was able to take 
 - User can view, edit and delete existing notes
 - User can edit a note and retain changes locally
 - User can order the notes in the list with drag and drop
-- User can edit notes without worrying about losing changes
 
 This video provides a quick walkthrough of the features. "Slow 3G" network throttling is turned on for this demo.
 
