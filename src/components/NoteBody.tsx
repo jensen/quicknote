@@ -17,6 +17,7 @@ import { saveNote } from "services/notes";
 import { useSave } from "context/save";
 import { useNote, useNotes } from "context/resources";
 import { useLocalStorage } from "hooks/local";
+import classNames from "classnames";
 
 const EditorWrapper = (props: React.PropsWithChildren<unknown>) => {
   const editor = useRef<HTMLInputElement>(null);
@@ -32,17 +33,19 @@ const EditorWrapper = (props: React.PropsWithChildren<unknown>) => {
   }
 
   return (
-    <div className="h-full flex-grow prose font-serif" onClick={focusEditor}>
-      {React.Children.map(props.children, (child) => {
-        if (!React.isValidElement<unknown>(child)) {
-          return child;
-        }
+    <div className="w-full flex-grow flex justify-center overflow-y-scroll">
+      <div className="w-full h-full prose font-serif" onClick={focusEditor}>
+        {React.Children.map(props.children, (child) => {
+          if (!React.isValidElement<unknown>(child)) {
+            return child;
+          }
 
-        return React.cloneElement(child, {
-          ref: () => editor,
-          ...child.props,
-        });
-      })}
+          return React.cloneElement(child, {
+            ref: () => editor,
+            ...child.props,
+          });
+        })}
+      </div>
     </div>
   );
 };
@@ -178,7 +181,6 @@ const NoteBody = (props: INoteBody) => {
         toggleBlock={toggleBlock}
         toggleStyle={toggleStyle}
       />
-
       <hr className="mt-2 mb-4" />
       <EditorWrapper>
         <Editor

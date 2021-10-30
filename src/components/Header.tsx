@@ -32,7 +32,7 @@ const Header = () => {
   const { save } = useSave();
 
   return (
-    <div className="flex justify-end p-4">
+    <div className="flex px-10 py-4">
       <ButtonGroup>
         <Routes>
           <Route path="/" element={<NewButton />} />

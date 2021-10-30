@@ -19,7 +19,7 @@ const NoteEditor = () => {
   const [title, setTitle] = useState(note?.title || "");
 
   return (
-    <div className="h-full px-10 py-10 flex flex-col">
+    <div className="h-full px-4 py-4 flex flex-col">
       <input
         className="text-4xl focus:outline-none"
         value={title}

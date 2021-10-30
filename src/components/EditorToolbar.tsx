@@ -63,14 +63,17 @@ interface IEditorToolbar {
 }
 
 const styles = {
-  select:
-    "block w-full py-1 px-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm",
+  select: classnames(
+    "block w-full py-1 px-2 rounded-md shadow-sm",
+    "border border-gray-300 bg-white",
+    "focus:outline-none focus:ring-blue-400 focus:border-blue-400"
+  ),
 };
 
 export const EditorToolbarSkeleton = () => {
   return (
     <>
-      <div className={"grid grid-flow-col gap-4 mb-2"}>
+      <div className="w-full grid grid-flow-col gap-4 mb-2">
         <select disabled className={styles.select}>
           {headingBlockTypes.map((type) => (
             <option key={type.style} value={type.style}>

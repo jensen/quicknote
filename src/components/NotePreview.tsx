@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from "react";
+import { useState } from "react";
 import { useNavigate, useMatch } from "react-router-dom";
 import { format } from "date-fns";
 import classNames from "classnames";
@@ -20,10 +20,6 @@ const NotePreview = (props: INotePreview) => {
   const isSelected = useMatch(`/${props.note.id}`) !== null;
 
   const [confirmDelete, setConfirmDelete] = useState(false);
-
-  const [isPending, startTransition] = useTransition();
-
-  console.log(isPending);
 
   const remove = () => {
     deleteNote(props.note.id).then(() => {

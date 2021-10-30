@@ -7,15 +7,13 @@ interface IPageGrid {
 }
 
 const PageGrid = (props: IPageGrid) => (
-  <main className="none:container h-full flex flex-col bg-gray-900 ">
+  <main className="none:container h-full flex flex-col bg-gray-900 pr-10">
     <header>{props.header}</header>
     <section className="flex flex-grow overflow-hidden">
       <aside className="max-w-sm overflow-y-scroll">{props.sidebar}</aside>
-      <div className="w-full overflow-y-scroll bg-white rounded-l">
-        {props.children}
-      </div>
+      <div className="bg-white rounded w-full">{props.children}</div>
     </section>
-    <footer>Test</footer>
+    <footer>&nbsp;</footer>
   </main>
 );
 
