@@ -2,7 +2,7 @@
 
 This project was completed as part of a group learning exercise. As a result of completing this project I wanted to have a better understanding of some of the newer React features.
 
-I also wanted to try out the API provided by Supabase, where I was able t take the opportunity to write a basic cache to reduce API requests.
+I also wanted to try out the API provided by Supabase, where I was able to take the opportunity to write a basic cache to reduce API requests.
 
 ## Project Features
 
@@ -14,7 +14,9 @@ I also wanted to try out the API provided by Supabase, where I was able t take t
 
 This video provides a quick walkthrough of the features. "Slow 3G" network throttling is turned on for this demo.
 
-[![Project Demo Video](https://img.youtube.com/vi/4HkSNPDgAzo/maxresdefault.jpg)](https://www.youtube.com/watch?v=4HkSNPDgAzo)
+
+https://user-images.githubusercontent.com/14803/139520108-5a310347-6957-461b-b453-17fd0b09c94d.mp4
+
 
 ## Technical Specifications
 
