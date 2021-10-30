@@ -16,6 +16,12 @@ export const deleteNote = (id: string) =>
     id,
   });
 
+/*
+  1. We initially download the data we need for our list
+  of notes. We omit the "content" of each note
+  and delay requesting "content" until the user has indicated
+  that they would like to view the note.
+*/
 export default preload<INote>(
   "notes",
   supabase
@@ -23,6 +29,18 @@ export default preload<INote>(
     .select("id, title, summary, created_at")
     .order("created_at", { ascending: false }),
   {
+    /* When we rely on a cache it is very important that
+       we apply any mutations that we make on the server
+       to the client as well.
+
+       This function takes the existing state and a new
+       note. It decides if it is an addition to front of
+       the list or a update somewhere within the list.
+
+       When we create a new note we perform an `upsert`
+       with Supabase, and so this `update` function also
+       performs an upsert for the cache.
+    */
     update: (state: INote[], data: INote) => {
       const index = state.findIndex((note) => note.id === data.id);
 
@@ -32,6 +50,14 @@ export default preload<INote>(
 
       return [data, ...state];
     },
+    /*
+      2. This is the second part of the data load process.
+      This function takes the state and an id of the resource
+      that is needed. If the content already exists, then we
+      don't need to load it. If it does not exist yet, then
+      we can make the request. When this request is complete
+      the rest of the data for the note will be added to the cache.
+    */
     fragments: (state: INote[], id: string) => {
       const note = state.find((note) => note.id === id);
 
@@ -50,6 +76,15 @@ export default preload<INote>(
         }
       });
     },
+    /* 
+      During operations in the resource loading flow
+      we have the opportunity to store info in
+      localStorage. This is useful for the ordering feature.
+      
+      Honestly this was added last minute, and seemed to be
+      the quickest way to hook into the different read,
+      preload, move operations for reasources.
+    */
     store: (state: INote[]) => {
       localStorage.setItem(
         "notes:order",
