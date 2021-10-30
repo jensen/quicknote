@@ -49,12 +49,25 @@ const DraggableNote = (props: IDraggableNote) => {
         return;
       }
 
+      /* There are two values that we will end up swapping,
+         we need to keep keep track of their values.
+         
+         dragIndex is the index of the item that is dragged
+         hoverIndex is the index of the item that is a possible drop target
+      */
       const dragIndex = item.index;
       const hoverIndex = props.index;
 
+      /* When these values match, we haven't dragged anywhere. */
       if (dragIndex === hoverIndex) {
         return;
       }
+
+      /* As we drag the elment down or up we want to swap its position
+         with the element below it.
+         
+         We need to figure out where the mouse is relative to the elements in our list.
+      */
 
       const hoverBoundingRect = draggableRef.current?.getBoundingClientRect();
 
@@ -65,14 +78,19 @@ const DraggableNote = (props: IDraggableNote) => {
 
       const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
 
+      /* When we are dragging downwards we want to avoiding the swap
+         until the mouse is lower than the halfway point of the element below. */
       if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
         return;
       }
 
+      /* When we are dragging upwards we want to avoid the swap
+         until the mouse is higher than the halfway point of the element below. */
       if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
         return;
       }
 
+      /* This eventually updates the cache, which is responsible for the order. */
       props.move(dragIndex, hoverIndex);
 
       item.index = hoverIndex;

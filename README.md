@@ -14,9 +14,7 @@ I also wanted to try out the API provided by Supabase, where I was able to take 
 
 This video provides a quick walkthrough of the features. "Slow 3G" network throttling is turned on for this demo.
 
-
 https://user-images.githubusercontent.com/14803/139520108-5a310347-6957-461b-b453-17fd0b09c94d.mp4
-
 
 ## Technical Specifications
 
@@ -113,4 +111,5 @@ All changes to the editor state are synchronized to local storage. This allows u
 - Loading states cause a flash of the loading indicator on faster sites because I am not configuring suspense with useTransition.
 - Saving and deleting states don't show a saving or deleting indicator.
 - Styling, currently it isn't great on iPad. Even worse on iPhone.
+- Missing error handling with ErrorBoundary for data loading.
 - Definitely some bugs.
