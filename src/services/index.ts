@@ -39,6 +39,11 @@ export interface IResourceLoader<T> {
   remove: (id: string) => void;
 }
 
+/*
+  It may be a few days before I get to commenting this properly.
+  
+  It is a prototype after all.
+*/
 export const preload = <T>(
   key: string,
   promise: any,
