@@ -20,6 +20,8 @@ This video provides a quick walkthrough of the features. "Slow 3G" network throt
 
 https://user-images.githubusercontent.com/14803/139520108-5a310347-6957-461b-b453-17fd0b09c94d.mp4
 
+[YouTube Version](https://www.youtube.com/watch?v=4HkSNPDgAzo)
+
 ## Technical Specifications
 
 - react@next using Suspense for data fetching
