@@ -1,15 +1,19 @@
-export const withStopPropagation = (fn?: any) => (event) => {
-  event.stopPropagation();
+import React from "react";
 
-  if (fn) {
-    fn(event);
-  }
-};
+export const withStopPropagation =
+  (fn?: any) => (event: React.BaseSyntheticEvent) => {
+    event.stopPropagation();
 
-export const withPreventDefault = (fn?: any) => (event) => {
-  event.preventDefault();
+    if (fn) {
+      fn(event);
+    }
+  };
 
-  if (fn) {
-    fn(event);
-  }
-};
+export const withPreventDefault =
+  (fn?: any) => (event: React.BaseSyntheticEvent) => {
+    event.preventDefault();
+
+    if (fn) {
+      fn(event);
+    }
+  };
