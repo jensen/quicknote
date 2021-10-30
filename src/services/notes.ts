@@ -5,6 +5,8 @@ interface ISaveNote extends Omit<INote, "id" | "created_at" | "updated_at"> {
   created_at?: string;
   updated_at?: string;
 }
+export const loadNote = (id: string) =>
+  supabase.from("notes").select("content").match({ id });
 
 export const saveNote = (note: ISaveNote) =>
   supabase.from("notes").upsert(note, { onConflict: "id" });
@@ -37,20 +39,16 @@ export default preload<INote>(
         return null;
       }
 
-      return supabase
-        .from("notes")
-        .select("content")
-        .match({ id })
-        .then(({ data }) => {
-          if (Array.isArray(data)) {
-            const [{ content }] = data;
+      return loadNote(id).then(({ data }) => {
+        if (Array.isArray(data)) {
+          const [{ content }] = data;
 
-            return {
-              ...note,
-              content,
-            };
-          }
-        });
+          return {
+            ...note,
+            content,
+          };
+        }
+      });
     },
     store: (state: INote[]) => {
       localStorage.setItem(
