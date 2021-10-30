@@ -49,7 +49,7 @@ supabase
     .order("created_at", { ascending: false })
 ```
 
-This request does not contain all of the data for each note, only the data required for the list of notes. This excludes the actual note content. When we select a note from the list anoter request is made that asks for the `content` for the selected note.
+This request does not contain all of the data for each note, only the data required for the list of notes. This excludes the actual note content. When we select a note from the list another request is made that asks for the `content` for the selected note.
 
 ```
 supabase.from("notes").select("content").match({ id });
@@ -109,7 +109,7 @@ Even though the notes are stored in a database provided by Supabase there are so
 
 The drag and drop functionality will change the order of the cards, but that order is not saved to the db. The localStorage has a record called `notes:order` which contains a JSON array of note ids.
 
-All changes to the editor state are synchronized to local storage. This allows us to return to leave a note half finished and return to it later. The content for each note that is currently edited is stored in the localStorage under `notes:${id}`. When a note is saved, this record is removed from the localStorage and is only created again when the user edits the note.
+All changes to the editor state are synchronized to local storage. This allows us to leave a note half finished and return to it later. The content for each note that is currently edited is stored in the localStorage under `notes:${id}`. When a note is saved, this record is removed from the localStorage and is only created again when the user edits the note.
 
 ### Incomplete
 
