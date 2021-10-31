@@ -62,7 +62,7 @@ const NotePreview = (props: INotePreview) => {
             {props.note.summary}
           </section>
           <section className="text-xs text-gray-600 font-light">
-            {format(new Date(props.note.created_at), "MMMM d yyyy, h:maa")}
+            {format(new Date(props.note.created_at), "MMMM d yyyy, h:mmaa")}
           </section>
         </div>
         <div
