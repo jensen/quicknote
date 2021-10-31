@@ -84,7 +84,7 @@ The benefits of this caching are a lot more clear if testing is done using [thro
 
 ### CSS
 
-I used tailwind for this project due to it growing popularity. I have been thinking a lot about ideals with React compatible CSS. There were some great composition opportunities that I would like to explore even further.
+I used tailwind for this project due to it's growing popularity. I have been thinking a lot about writing maintainable React compatible CSS. There were some great composition opportunities that I would like to explore even further.
 
 One of the things I really liked about it was how easy it is to compose styles using the `classnames` library.
 
