@@ -42,16 +42,16 @@ Supabase has been around for a little while and I have been curious about how we
 
 This project has been designed to minimize the number of requests to a server. When the app is loaded a single request is made to Supabase for the list of notes.
 
-```
+```javascript
 supabase
-    .from("notes")
-    .select("id, title, summary, created_at")
-    .order("created_at", { ascending: false })
+  .from("notes")
+  .select("id, title, summary, created_at")
+  .order("created_at", { ascending: false });
 ```
 
 This request does not contain all of the data for each note, only the data required for the list of notes. This excludes the actual note content. When we select a note from the list another request is made that asks for the `content` for the selected note.
 
-```
+```javascript
 supabase.from("notes").select("content").match({ id });
 ```
 
@@ -61,7 +61,7 @@ When these requests are made, the results are cached in a normalized cache in me
 
 What does note content look like? This:
 
-```
+```json
 {
   "blocks": [
     {
@@ -88,7 +88,7 @@ I used tailwind for this project due to it's growing popularity. I have been thi
 
 One of the things I really liked about it was how easy it is to compose styles using the `classnames` library.
 
-```
+```jsx
 className={classnames(
   "w-8 h-8 flex flex-col mr-2 justify-center items-center",
   "border border-gray-300 hover:bg-gray-50",
